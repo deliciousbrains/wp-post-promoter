@@ -1,0 +1,22 @@
+{
+  "name": "deliciousbrains/wp-post-promoter",
+  "description": "WordPress must-use plugin for promoting posts via email and social media.",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Delicious Brains",
+      "email": "nom@deliciousbrains.com",
+      "homepage": "https://deliciousbrains.com/"
+    }
+  ],
+  "type": "wordpress-muplugin",
+  "require": {
+    "composer/installers": "~1.0",
+    "lkwdwrd/wp-muplugin-loader": "~1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "DeliciousBrains\\WPPromoter\\": "src/"
+    }
+  }
+}
