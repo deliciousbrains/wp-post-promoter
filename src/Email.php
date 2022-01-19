@@ -17,7 +17,7 @@ class Email {
 	}
 
 	public function convert_email_message( $post ) {
-		if ( ! in_array( $post->post_type, array( 'post', 'doc' ) ) ) {
+		if ( ! in_array( $post->post_type, apply_filters( 'dbi_post_promoter_post_types', array( 'post', 'doc' ) ) ) ) {
 			return;
 		}
 
