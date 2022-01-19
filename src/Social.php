@@ -4,11 +4,17 @@ namespace DeliciousBrains\WPPromoter;
 
 class Social {
 
+	protected function get_post_types() {
+		return apply_filters( 'dbi_post_promoter_post_types', array( 'post', 'doc' ) );
+	}
+
 	public function init() {
 		add_action( 'admin_print_scripts-post-new.php', array( $this, 'enqueue_scripts' ), 11 );
 		add_action( 'admin_print_scripts-post.php', array( $this, 'enqueue_scripts' ), 11 );
-		add_action( 'add_meta_boxes_post', array( $this, 'add_meta_box' ) );
-		add_action( 'add_meta_boxes_doc', array( $this, 'add_meta_box' ) );
+
+		foreach ( $this->get_post_types() as $post_type ) {
+			add_action( 'add_meta_boxes_' . $post_type, array( $this, 'add_meta_box' ) );
+		}
 	}
 
 	public function enqueue_scripts() {
