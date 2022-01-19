@@ -118,7 +118,7 @@ class Email {
 			<tr>
 				<td valign="top" style="font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; padding-bottom: 14px;">
 					<?php echo $user->first_name, ' ', $user->last_name; ?><br>
-					<a style="font-size: 12px; color: #000000;" href="http://deliciousbrains.com?utm_source=Email%20marketing%20software&utm_medium=email&utm_campaign=email-signature">Delicious Brains Inc.</a>
+					<a style="font-size: 12px; color: #000000;" href="https://deliciousbrains.com?utm_source=Email%20marketing%20software&utm_medium=email&utm_campaign=email-signature">Delicious Brains Inc.</a>
 				</td>
 				<td>&nbsp;&nbsp;</td>
 				<td>
