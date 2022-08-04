@@ -144,7 +144,7 @@ class Email {
 			$subject = get_post_meta( $post->ID, 'article_promo_email_subject', true );
 
 			if ( ! $message ) {
-				$message = "{% if subscriber.first_name %}Hey {{ subscriber.first_name }}{% else %}Hey{% endif %},\n\n\n\n[link]\n\nCheers,\n\n[signature]";
+				$message = "{% if subscriber.first_name %}Hey {{ subscriber.first_name | escape }}{% else %}Hey{% endif %},\n\n\n\n[link]\n\nCheers,\n\n[signature]";
 			}
 
 			wp_nonce_field( 'article-promo-email', 'article_promo_email_nonce' );
