@@ -1,13 +1,14 @@
 #article-promo-email input[type=text] {
-  width: 100%; }
-
+  width: 100%;
+}
 #article-promo-email textarea {
   margin: 10px 0 0 0;
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   line-height: 1.4;
   background-color: transparent;
   box-shadow: none;
   border: 0;
   padding: 0;
-  width: 100%; }
+  width: 100%;
+}
