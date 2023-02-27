@@ -1,25 +1,25 @@
-var gulp = require( 'gulp' );
-var gulpSass = require( 'gulp-sass' )(require('sass'));
-var rename = require( 'gulp-rename' );
-var cssmin = require( 'gulp-cssmin' );
-var uglify = require( 'gulp-uglify' );
-var livereload = require( 'gulp-livereload' );
+const gulp = require( 'gulp' );
+const sass = require('gulp-sass')(require('sass'));
+const rename = require( 'gulp-rename' );
+const cleanCSS = require('gulp-clean-css');
+const uglify = require( 'gulp-uglify' );
+const livereload = require( 'gulp-livereload' );
 
-function sass() {
+function compileSass() {
 	return gulp.src( 'assets/scss/**/*.scss' )
-		.pipe( gulpSass.sync().on( 'error', gulpSass.logError ) )
-		.pipe( gulp.dest( 'assets/css' ) )
-		.pipe( livereload() );
-};
+		.pipe( sass().on( 'error', sass.logError ) )
+		.pipe( gulp.dest( 'assets/css' ) );
+}
 
-function css () {
-	return gulp.src( [ 'assets/css/**/*.css', '!assets/css/**/*.min.css' ] )
-		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( cssmin() )
-		.pipe( gulp.dest( 'assets/css' ) )
-};
+// Seems like cleanCSS is
+function cssMin() {
+    return gulp.src( ['assets/css/**/*.css', '!assets/css/**/*.min.css'] )
+        .pipe(rename({ extname: '.min.css' }))
+        .pipe( cleanCSS() )
+        .pipe( gulp.dest( 'assets/css' ) )
+}
 
-function js () {
+function js() {
 	return gulp.src( [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ] )
 		.pipe( uglify( {
 			mangle: false
@@ -29,14 +29,12 @@ function js () {
 		.pipe( livereload() );
 };
 
-exports.sass = sass;
-exports.css = css;
-exports.js = js;
+function runLivereload() {
+	livereload.listen();
+	gulp.watch( [ 'assets/scss/**/*.scss' ], css );
+	gulp.watch( [ 'assets/js/**/*.js' ], js );
+};
 
-exports.build = gulp.series( sass, css, js );
-
-exports.watch = gulp.series( sass, css, js, () => {
-        livereload.listen();
-        gulp.watch( [ 'assets/scss/**/*.scss' ], gulp.series( sass, css ) );
-        gulp.watch( [ 'assets/js/**/*.js' ], gulp.series( js ) );
-    } );
+exports.css = gulp.series( compileSass, cssMin );
+exports.default = gulp.series( exports.css, js);
+exports.watch = gulp.series( exports.css, js, runLivereload );
