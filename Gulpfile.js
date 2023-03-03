@@ -11,13 +11,14 @@ function compileSass() {
 		.pipe( gulp.dest( 'assets/css' ) );
 }
 
-// Seems like cleanCSS is
 function cssMin() {
     return gulp.src( ['assets/css/**/*.css', '!assets/css/**/*.min.css'] )
         .pipe(rename({ extname: '.min.css' }))
         .pipe( cleanCSS() )
         .pipe( gulp.dest( 'assets/css' ) )
 }
+
+const css = gulp.series( compileSass, cssMin );
 
 function js() {
 	return gulp.src( [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ] )
@@ -26,15 +27,15 @@ function js() {
 		} ) )
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( gulp.dest( 'assets/js' ) )
-		.pipe( livereload() );
 };
 
 function runLivereload() {
 	livereload.listen();
 	gulp.watch( [ 'assets/scss/**/*.scss' ], css );
-	gulp.watch( [ 'assets/js/**/*.js' ], js );
+	gulp.watch( [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ], js );
 };
 
+exports.js = js
 exports.css = gulp.series( compileSass, cssMin );
 exports.default = gulp.series( exports.css, js);
-exports.watch = gulp.series( exports.css, js, runLivereload );
+exports.watch = gulp.series( css, js, runLivereload );
