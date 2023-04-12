@@ -18,7 +18,7 @@ class Display {
 		$ext   = array_pop( $parts );
 		$file  = implode( '.', $parts );
 
-		$base = '/assets/' . $ext . '/' . $file . '.' . $ext;
+		$base = '/build/' . $file . '.' . $ext;
 
 		$path = DBI_PROMOTER_BASE_DIR . $base;
 		$src  = DBI_PROMOTER_BASE_URL . $base;
