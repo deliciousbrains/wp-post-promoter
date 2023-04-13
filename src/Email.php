@@ -171,6 +171,6 @@ class Email {
 	}
 
 	public function enqueue_scripts() {
-		Display::enqueue( 'article-promo-email.min.css', 'article-promo-email' );
+		Display::enqueue( 'article-promo-email.css', 'article-promo-email' );
 	}
 }
