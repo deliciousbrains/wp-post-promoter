@@ -1,14 +1,11 @@
 {
   "name": "wp-promoter",
   "private": true,
+  "scripts": {
+    "build": "wp-scripts build assets/scss/*.js assets/js/*.js",
+    "start": "wp-scripts start assets/scss/*.js assets/js/*.js"
+  },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-livereload": "^4.0.2",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.58.3"
+    "@wordpress/scripts": "^26.1.0"
   }
 }

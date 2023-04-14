@@ -18,8 +18,8 @@ class Social {
 	}
 
 	public function enqueue_scripts() {
-		Display::enqueue( 'social.js', 'social-promoter', array( 'jquery' ), null, true );
-		Display::enqueue( 'social.css', 'social-promoter' );
+		Display::enqueue( 'social.min.js', 'social-promoter', array( 'jquery' ), null, true );
+		Display::enqueue( 'social-styles.css', 'social-promoter' );
 	}
 
 	public function add_meta_box() {
