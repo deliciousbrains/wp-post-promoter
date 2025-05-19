@@ -1,7 +1,7 @@
 {
   "name": "deliciousbrains/wp-post-promoter",
   "description": "WordPress must-use plugin for promoting posts via email and social media.",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Delicious Brains",
@@ -11,8 +11,7 @@
   ],
   "type": "wordpress-muplugin",
   "require": {
-    "composer/installers": "~1.0",
-    "boxuk/wp-muplugin-loader": "^1.2"
+    "composer/installers": "^2.3"
   },
   "autoload": {
     "psr-4": {
@@ -21,7 +20,6 @@
   },
   "config": {
     "allow-plugins": {
-      "boxuk/wp-muplugin-loader": true,
       "composer/installers": true
     }
   }
