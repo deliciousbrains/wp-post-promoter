@@ -11,6 +11,7 @@
   ],
   "type": "wordpress-muplugin",
   "require": {
+    "boxuk/wp-muplugin-loader": "^2.0",
     "composer/installers": "^2.3"
   },
   "autoload": {
@@ -20,7 +21,11 @@
   },
   "config": {
     "allow-plugins": {
-      "composer/installers": true
+      "composer/installers": true,
+      "boxuk/wp-muplugin-loader": true
     }
+  },
+  "extra": {
+    "mu-require-file": false
   }
 }
