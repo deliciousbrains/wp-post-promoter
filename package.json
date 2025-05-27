@@ -9,6 +9,10 @@
     "@wordpress/scripts": "^26.1.0"
   },
   "resolutions": {
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "eslint-plugin-jsdoc": "^50.6.17"
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }
